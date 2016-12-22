@@ -20,20 +20,26 @@ public class Main {
 		
 			
 			num_adivinar = generarNumero();
-			num_usuario = EntradaSalida.solicitarNumero();
-			
+						
 			do
 			{			
+				num_usuario = EntradaSalida.solicitarNumero();
 				numero_adivinado = compararNumero(num_adivinar, num_usuario);
 					
 					if (numero_adivinado)
-					{
-						EntradaSalida.numAdivinado();
-					}
-						else
 						{
-							EntradaSalida.numNoAdivinado();
+							EntradaSalida.numAdivinado();
 						}
+						else if (contador < 4)
+							{
+								EntradaSalida.pruebaDeNuevo(contador);
+							}
+							else
+								{
+									EntradaSalida.perdiste();
+								}
+							
+					contador++;
 			}
 				while ((contador < 5) && !numero_adivinado);
 		
@@ -67,10 +73,18 @@ public class Main {
 		boolean adivinado = false;
 			
 		if(num_usuario < num_adivinar)
-		{//TODO if > < =
-			EntradaSalida.el
+		{
+			EntradaSalida.esMenor();
 		}	
-			
+			else if (num_usuario > num_adivinar)
+			{
+				EntradaSalida.esMayor();
+			}
+				else
+				{
+					adivinado = true;
+				}
+				
 		return adivinado;
 	}
 	
