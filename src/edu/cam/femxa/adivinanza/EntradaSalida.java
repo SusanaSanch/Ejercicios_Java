@@ -21,17 +21,13 @@ public class EntradaSalida
 	
 	public static void esMenor()
 	{
-		Scanner scan = null;
-		
-			System.out.println("Tu número es menor");
+		System.out.println("Tu número es menor");
 	}
 	
 	
 	
 	public static void esMayor()
 	{
-		Scanner scan = null;
-		
 			System.out.println("Tu número es mayor");							
 	}
 	
@@ -62,6 +58,14 @@ public class EntradaSalida
 		
 			System.out.println("Perdiste!");
 			System.out.println(":(");					
+	}
+	
+	public static void numeroCorrecto(int num_correcto)
+	{	
+		Scanner scan = null;
+		
+			System.out.println("El número es:");
+			System.out.println(num_correcto);					
 	}
 	
 }

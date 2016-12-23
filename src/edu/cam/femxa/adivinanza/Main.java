@@ -37,6 +37,7 @@ public class Main {
 							else
 								{
 									EntradaSalida.perdiste();
+									EntradaSalida.numeroCorrecto(num_adivinar);
 								}
 							
 					contador++;
