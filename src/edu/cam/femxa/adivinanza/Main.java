@@ -2,11 +2,15 @@ package edu.cam.femxa.adivinanza;
 
 public class Main {
 
+	
+	
+	public static int INTENTOS = 5;
+	
 	/**
 	 *Adivinanza de número. El usuario debe adivinar un número entre 1 y 100 
 	 * @param args
 	 */
-	
+		
 	public static void main(String[] args) 
 	{
 		//generar un número entre 1 y 100
@@ -42,7 +46,7 @@ public class Main {
 							
 					contador++;
 			}
-				while ((contador < 5) && !numero_adivinado);
+				while ((contador < INTENTOS) && !numero_adivinado);
 		
 
 	}
