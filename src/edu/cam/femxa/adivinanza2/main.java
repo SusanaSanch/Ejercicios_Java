@@ -3,7 +3,7 @@ package edu.cam.femxa.adivinanza2;
 public class main {
 
 	
-	public static int INTENTOS = 5;
+	public static final int INTENTOS = 5;
 	
 	
 	public static void main(String[] args) {

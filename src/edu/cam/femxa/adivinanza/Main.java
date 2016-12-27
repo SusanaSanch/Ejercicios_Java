@@ -4,7 +4,7 @@ public class Main {
 
 	
 	
-	public static int INTENTOS = 5;
+	public static final int INTENTOS = 5;
 	
 	/**
 	 *Adivinanza de número. El usuario debe adivinar un número entre 1 y 100 
