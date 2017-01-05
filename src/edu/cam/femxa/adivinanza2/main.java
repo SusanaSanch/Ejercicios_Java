@@ -1,9 +1,11 @@
 package edu.cam.femxa.adivinanza2;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class main {
 
 	
-	public static final int INTENTOS = 5;
+	public static final int INTENTOS = 10;
 	
 	
 	public static void main(String[] args) {
@@ -12,9 +14,13 @@ public class main {
 		int contador = 0;
 		boolean acierto = false;
 		char respuesta = 0;
+		int num_rango_may = 0;
+		int num_rango_men = 0;
 		
 		EntradasSalidas.instruccionesJuego();
 		numero = generarNumero();
+		num_rango_may = 100; 
+		num_rango_men = 1;
 		
 		do 
 		{
@@ -24,11 +30,13 @@ public class main {
 						
 			if (respuesta == '>')
 			{
-				numero = generarMenor(numero);
+				num_rango_may = numero;
+				numero = generarMenor(num_rango_may, num_rango_men);
 			}
 				else if (respuesta == '<')
 				{
-					numero = generarMayor(numero);
+					num_rango_men = numero;
+					numero = generarMayor(num_rango_may, num_rango_men);		
 				}
 					else if (respuesta == '=')
 					{
@@ -39,7 +47,11 @@ public class main {
 			
 		}
 			while((contador < INTENTOS) && (!acierto));
+			
+		if(!acierto)
+			{
 			EntradasSalidas.mostrarVictoria();
+			}
 
 	}
 	
@@ -55,22 +67,20 @@ public class main {
 	
 	
 
-	public static int generarMenor(int numero)
+	public static int generarMenor(int max, int min)
 	{
+	
 		int num_menor = 0;
-			num_menor = (int) (((numero - 1) * Math.random()) + 1);
+					num_menor = (int) ((ThreadLocalRandom.current().nextInt(min, max)));
 		return num_menor;
 	}
 	
 	
 	
-	public static int generarMayor(int numero)
+	public static int generarMayor(int max, int min)
 	{
 		int num_mayor = 0;
-			do
-			{
-			num_mayor = (int) ((100 * Math.random()) + 1);
-			}while (num_mayor > numero);
+			num_mayor = (int) ((ThreadLocalRandom.current().nextInt(min, max)));
 		return num_mayor;
 	}
 }

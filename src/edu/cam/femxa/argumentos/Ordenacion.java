@@ -2,93 +2,70 @@ package edu.cam.femxa.argumentos;
 
 import java.util.Scanner;
 
-import edu.cam.femxa.adivinanza.Main;
-
 public class Ordenacion {
 
-	public static void main(String[] args) {
-		
-		int a_ent_a [] = new int [3];
-		int longi = a_ent_a.length;
-		boolean menor = false;
-			a_ent_a [0] = solicitarNumero();		
+	public static void desplazarDesdeHasta (int a_ent [] , int pos_inicial, int pos_final)
+	{
 				
-		for (int pos = 0; pos < longi; pos++)
+		for (int pos = pos_final+1; pos > pos_inicial; pos--) 
 		{
-			int num_comparar = 0; 
-			int numero_solicitado = 0;
-			int pos_array = 0;
-					numero_solicitado = solicitarNumero();
-			 		num_comparar = a_ent_a[0];
-				
-			 
-			do
+			if (pos < a_ent.length)
 			{
-				menor = compararNumero(numero_solicitado, num_comparar );
-				if (menor)
-				{
-					a_ent_a[pos_array] = numero_solicitado;
-				}
-				pos_array++;
+				a_ent [pos] = a_ent [pos-1];
 			}
-			while ((pos_array < longi) && menor);
-			
-				
-				
-				
-			}
-			
-			/*
-			do 
-			{
-				pos_mayor++;
-			}
-			while (a_ent_a[pos] > a_ent_a[pos_mayor]);
-			*/
-			
-		
-		
-		for (int i = 0; i< a_ent_a.length; i++)
-		{
-			System.out.println("Numero en pos " + i + " = " + a_ent_a[i]);
 		}
 		
-		
-		
 	}
 	
-	
-	public static int solicitarNumero()
+	public static void mostrarArray (int ae [])
 	{
-		int numero = 0;
-		Scanner scan = null;
-		
-				System.out.println("Introduzca un número entero entre el 1 y el 100");
-		scan = new Scanner (System.in);
-		numero = scan.nextInt();
-		return numero;
+		for (int i = 0; i < ae.length; i++) {
+			System.out.print(ae[i] + " ");
+		}
+		System.out.println();
 	}
 	
-	
-	
-	public static boolean compararNumero(int num_solicitado, int num_comp)
+	public static int obtenerPosicion (int [] a_ent, int n_usuario, int limite)
 	{
-		boolean menor = false;
-		
-			if (num_solicitado < num_comp)
+		int pos = 0;
+				
+			while ((pos < limite)&&(a_ent[pos] < n_usuario))
 			{
-				menor = true;
+				pos++;
 			}
-			
-		return menor;
+		
+		return pos;
 	}
-
 	
-	/*
-	for (int i = 0; i< a_ent_a.length; i++)
+	public static int pedirNumero()
 	{
-		a_ent_a [i] = Main.generarNumero();
+		int n_pedido = 0;
+		Scanner scanner = null;
+			
+			scanner = new Scanner(System.in);
+			n_pedido = scanner.nextInt();
+			
+		return n_pedido;
 	}
-	*/
+	
+	public static void main(String[] args) {
+
+		int a_ent[] = new int [10];
+		int n_usuario = 0; 
+		int pos = 0;
+		int longi = 0;
+			longi = a_ent.length;
+		
+		for (int indice = 0; indice < longi; indice++) 
+		{
+			System.out.println("Dame nº " + indice);
+			n_usuario = pedirNumero();
+			pos = obtenerPosicion(a_ent, n_usuario, indice);
+			
+			desplazarDesdeHasta(a_ent, pos, indice);
+			a_ent[pos] = n_usuario;
+		}
+		mostrarArray(a_ent);
+	}
 	
 }
