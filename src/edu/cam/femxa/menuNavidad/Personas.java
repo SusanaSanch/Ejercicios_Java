@@ -2,6 +2,7 @@ package edu.cam.femxa.menuNavidad;
 
 public class Personas {
 	
+	
 	int edad;
 	String nombre;
 

@@ -32,6 +32,11 @@ public enum Eleccion {UNO, DOS, TRES, CUATRO, CINCO}
 		return salir;
 	}
 	
+	
+	
+	/*
+	 * Cambiar persona por persona de array
+	 */
 	public static void insertarPersona()
 	{
 		
