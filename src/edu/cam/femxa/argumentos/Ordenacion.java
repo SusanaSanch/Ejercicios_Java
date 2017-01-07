@@ -7,7 +7,7 @@ public class Ordenacion {
 	public static void desplazarDesdeHasta (int a_ent [] , int pos_inicial, int pos_final)
 	{
 				
-		for (int pos = pos_final+1; pos > pos_inicial; pos--) 
+		for (int pos = pos_final + 1; pos > pos_inicial; pos--) 
 		{
 			if (pos < a_ent.length)
 			{
