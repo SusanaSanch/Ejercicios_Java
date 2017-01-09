@@ -3,8 +3,8 @@ package edu.cam.femxa.menuNavidad;
 public class Personas {
 	
 	
-	int edad;
-	String nombre;
+	private int edad;
+	private String nombre;
 
 	public Personas(String nombre2, int edad2) {
 		// TODO Auto-generated constructor stub
@@ -26,9 +26,10 @@ public class Personas {
 		this.nombre = nombre;
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public void mostrarPersona()
+	{
+		System.out.println("Edad: " + this.edad);
+		System.out.println("Nombre: " + this.nombre);
 	}
 
 }

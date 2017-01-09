@@ -191,6 +191,8 @@ public class Main {
 	public static void main(String[] args) 
 	{
 		
+		ListaPersonas lista_personas = null;
+		lista_personas = new ListaPersonas ();
 		Personas listado[] = new Personas[5]; //Crea array de 5 personas
 		boolean salir = false;
 		int opcion = 0;
@@ -213,7 +215,7 @@ public class Main {
 		 */
 			
 		}
-		while (salir);
+		while (!salir);
 		System.out.println("PROGRAMA FINALIZADO");
 	}
 
