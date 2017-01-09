@@ -2,8 +2,6 @@ package edu.cam.femxa.palindromos;
 
 import java.util.Scanner;
 
-import oracle.jrockit.jfr.tools.ConCatRepository;
-
 public class Main 
 {
 
