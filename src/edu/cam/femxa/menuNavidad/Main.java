@@ -55,8 +55,8 @@ public class Main {
 					System.out.println("INTRODUZCA LA EDAD DE LA PERSONA: " + (cont+1));
 					edad = scan.nextInt();
 					
-					listado[cont].setEdad(edad);
-					listado[cont].setNombre(nombre);
+					//listado[cont].setNombre(nombre);
+					listado[cont] = new Personas(nombre, edad);
 				}	
 			return listado;
 									
