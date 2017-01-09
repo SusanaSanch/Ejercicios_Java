@@ -33,70 +33,33 @@ public class Main {
 		return opcion;
 	}
 	
-	/**
-	 * convierte el número introducido en uno de los diferentes enumerados
-	 * @param opcion número elegido del menú
-	 * @return enumerado elegido
-	 */
-	public static String convertirOpcion (int opcion)
-	{
-		String opcionL = null;
-			switch(opcion)
-			{
-			case 1:
-				opcionL = "UNO";
-				break;
-			case 2:
-				opcionL = "DOS";
-				break;
-			case 3:
-				opcionL = "TRES";
-				break;
-			case 4:
-				opcionL = "CUATRO";
-				break;
-			case 5:
-				opcionL = "CINCO";
-				break;		
-			}
-			
-		return opcionL;
-	}
 	
-	public static void insertarPersona(Personas [] listado)
+	
+	public static Personas[] insertarPersona(Personas [] listado, int cont)
 	{
 		
 		Scanner scan = null;
 		scan = new Scanner(System.in);
 		String nombre = null;
 		int edad = 0;
-		int cont = 0;
 		
-			for(int i = 0; i < listado.length; i++)
+			if(cont >= listado.length)
 			{
-				
-				if((listado[i].getEdad() == 0) && (listado[i].getNombre() == null))
+				System.out.println("La base de datos está completa, por favor borre una persona para continuar");
+			}	
+				else
 				{
-				System.out.println("INTRODUZCA EL NOMBRE DE LA PERSONA: " + (i+1));
-				nombre = scan.next();
-				
-				System.out.println("INTRODUZCA LA EDAD DE LA PERSONA: " + (i+1));
-				edad = scan.nextInt();
-				
-				listado[i].setEdad(edad);
-				listado[i].setNombre(nombre);
-				}
-				else 
-				{
-					cont++;
-				}
-			
-				if(cont == (listado.length - 1))
-				{
-					System.out.println("La base de datos está completa, por favor borre una persona para continuar");
-				}
-			}
-			
+					System.out.println("INTRODUZCA EL NOMBRE DE LA PERSONA: " + (cont+1));
+					nombre = scan.next();
+					
+					System.out.println("INTRODUZCA LA EDAD DE LA PERSONA: " + (cont+1));
+					edad = scan.nextInt();
+					
+					listado[cont].setEdad(edad);
+					listado[cont].setNombre(nombre);
+				}	
+			return listado;
+									
 	}
 	
 	
@@ -190,25 +153,26 @@ public class Main {
 		
 	}
 	
-	public static boolean ejecutarMenu(String opcionL, Personas [] listado)
+	public static boolean ejecutarMenu(int opcion, Personas [] listado, int cont)
 	{
 		boolean salir = false;
 		
-			switch (opcionL)
+			switch (opcion)
 			{
-			case "UNO":
-				insertarPersona(listado); //inserta Personas en el array;
+			case 1:
+				insertarPersona(listado, cont); //inserta Personas en el array;
+				cont++;
 				break;
-			case "DOS":
+			case 2:
 				listarPersonas(listado); //lista las personas que hay en el array
 				break;
-			case "TRES":
+			case 3:
 				buscarPersonas(listado); //busca una persona por su nombre;
 				break;
-			case "CUATRO":
+			case 4:
 				borrarPersona(listado);//busca una persona y la borra;
 				break;
-			case "CINCO":
+			case 5:
 				salir = true;
 				break;
 				
@@ -230,6 +194,7 @@ public class Main {
 		Personas listado[] = new Personas[5]; //Crea array de 5 personas
 		boolean salir = false;
 		int opcion = 0;
+		int cont = 0;
 		String opcionLetras = null;
 		
 		do //Bucle de menú
@@ -240,8 +205,8 @@ public class Main {
 		 * TODO SELECCIONAR OPCION, CONVERTIR OPCIÓN EN ENUM
 		 */
 			opcion = seleccionarOpcion();
-			opcionLetras = convertirOpcion(opcion);
-			ejecutarMenu(opcionLetras,listado);			
+			//opcionLetras = convertirOpcion(opcion);
+			ejecutarMenu(opcion,listado, cont);			
 			
 		/*
 		 * TODO SWITCH ENUM
