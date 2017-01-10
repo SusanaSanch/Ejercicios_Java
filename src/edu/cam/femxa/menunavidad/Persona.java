@@ -1,13 +1,17 @@
-package edu.cam.femxa.menuNavidad;
+package edu.cam.femxa.menunavidad;
 
-public class Personas {
+public class Persona {
 	
 	
 	private int edad;
 	private String nombre;
 
-	public Personas(String nombre2, int edad2) {
-		// TODO Auto-generated constructor stub
+	public Persona(){}
+
+	public Persona(String nombre, int edad) {
+		super();
+		this.nombre = nombre;
+		this.edad = edad;
 	}
 
 	public int getEdad() {

@@ -1,4 +1,4 @@
-package edu.cam.femxa.menuNavidad;
+package edu.cam.femxa.menunavidad;
 
 import java.util.Scanner;
 
@@ -35,7 +35,7 @@ public class Main {
 	
 	
 	
-	public static Personas[] insertarPersona(Personas [] listado, int cont)
+	public static Persona[] insertarPersona(Persona [] listado, int cont)
 	{
 		
 		Scanner scan = null;
@@ -56,7 +56,7 @@ public class Main {
 					edad = scan.nextInt();
 					
 					//listado[cont].setNombre(nombre);
-					listado[cont] = new Personas(nombre, edad);
+					listado[cont] = new Persona(nombre, edad);
 				}	
 			return listado;
 									
@@ -64,7 +64,7 @@ public class Main {
 	
 	
 	
-	public static void listarPersonas(Personas [] listado)
+	public static void listarPersonas(Persona [] listado)
 	{
 		for (int i = 0; i < listado.length; i++)
 		{
@@ -75,7 +75,7 @@ public class Main {
 	}
 	
 	
-	public static void buscarPersonas(Personas [] listado)
+	public static void buscarPersonas(Persona [] listado)
 	{
 		Scanner scan = null;
 		scan = new Scanner (System.in);
@@ -105,7 +105,7 @@ public class Main {
 		}
 	}
 	
-	public static void borrarPersona(Personas [] listado)
+	public static void borrarPersona(Persona [] listado)
 	{
 		Scanner scan = null;
 		scan = new Scanner (System.in);
@@ -153,7 +153,7 @@ public class Main {
 		
 	}
 	
-	public static boolean ejecutarMenu(int opcion, Personas [] listado, int cont)
+	public static boolean ejecutarMenu(int opcion, Persona [] listado, int cont)
 	{
 		boolean salir = false;
 		
@@ -193,7 +193,7 @@ public class Main {
 		
 		ListaPersonas lista_personas = null;
 		lista_personas = new ListaPersonas ();
-		Personas listado[] = new Personas[5]; //Crea array de 5 personas
+		Persona listado[] = new Persona[5]; //Crea array de 5 personas
 		boolean salir = false;
 		int opcion = 0;
 		int cont = 0;
