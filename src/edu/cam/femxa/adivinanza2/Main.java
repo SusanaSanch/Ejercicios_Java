@@ -2,7 +2,7 @@ package edu.cam.femxa.adivinanza2;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class main {
+public class Main {
 
 	
 	public static final int INTENTOS = 10;

@@ -14,17 +14,23 @@ public class main {
 		System.out.println("Frase original: " + frase);
 		System.out.println("Frase sin espacios: " + frase_sin_espacios);
 		
+		
 	}
 	
 	
+	/**
+	 * Elimina los espacios en una cadena.
+	 * @param frase_original cadena original a la que se le quitarán los espacios
+	 * @return cadena introducida sin espacios
+	 */
 	
 	public static String eliminaEspacios(String frase_original)
 	{
 		String frase_convertida = "";
+		char aux = 0;
 			
 			for (int i = 0; i < frase_original.length(); i++)
 			{
-				char aux = 0;
 				aux = frase_original.charAt(i);
 				if(aux != ' ')
 				{

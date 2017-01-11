@@ -2,7 +2,7 @@ package edu.cam.femxa.argumentos;
 
 import edu.cam.femxa.adivinanza.Main;
 
-public class shell
+public class Shell
 {
 
 	public static void main(String[] args) 
