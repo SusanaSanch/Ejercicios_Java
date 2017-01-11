@@ -3,6 +3,11 @@ package edu.cam.femxa.ficheros;
 import java.io.File;
 
 public class Ocultos {
+	
+	/**
+	 * dada una ruta, mostrar sólo los subdirectorios ocultos
+	 * @param args
+	 */
 
 	public static void main(String[] args)
 	{
