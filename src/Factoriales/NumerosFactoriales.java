@@ -4,14 +4,16 @@ import java.util.Scanner;
 
 public class NumerosFactoriales {
 	
+	
+	//probar con long en lugar de int
 	/**
 	 * solicita número al usuario
 	 * @return devuelve el número dado por el usuario
 	 */
 	
-	public static int solicitarNumero()
+	public static long solicitarNumero()
 	{
-		int num = 0;
+		long num = 0;
 		Scanner scan =  new Scanner(System.in);
 		System.out.println("Introduzca un número");
 		
@@ -27,9 +29,9 @@ public class NumerosFactoriales {
 	 * @return factorial del número dado
 	 */
 	
-	public static int calcularFactorial(int numero)
+	public static long calcularFactorial(long numero)
 	{
-		int factorial = 1;
+		long factorial = 1;
 	
 			if(numero > 1)
 			{
@@ -46,7 +48,7 @@ public class NumerosFactoriales {
 	 * @param num número dado
 	 */
 	
-	public static void mostrarFactorial(int factorial, int num)
+	public static void mostrarFactorial(long factorial, long num)
 	{
 		System.out.println("el factorial de " + num + " es: " + factorial);
 	}
@@ -59,8 +61,8 @@ public class NumerosFactoriales {
 	
 	public static void main(String[] args) {
 	
-		int numero_usuario = 0;
-		int factorial = 0;
+		long numero_usuario = 0;
+		long factorial = 0;
 		
 		numero_usuario = solicitarNumero();//solicitar número para ver su factorial
 		factorial = calcularFactorial(numero_usuario);//calcular factorial

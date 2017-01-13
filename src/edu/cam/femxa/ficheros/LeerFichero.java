@@ -25,10 +25,10 @@ public class LeerFichero {
 		
 		while(aux != -1)
 			{
-			char c = (char) aux; //casting en el que convierto el int en un caracter
-			System.out.println(c);
-			total_caract = total_caract + aux;
-			aux = file.read();
+				char c = (char) aux; //casting en el que convierto el int en un caracter
+				System.out.println(c);
+				total_caract = total_caract + aux;
+				aux = file.read();
 			}
 		
 		System.out.println("La suma es: " + total_caract);
