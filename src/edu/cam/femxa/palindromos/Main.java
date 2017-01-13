@@ -98,7 +98,7 @@ public class Main
 			ini++;
 			fin--;
 		}
-		while (ini < fin && palindromo);
+		while (ini <= fin && palindromo);
 		
 		return palindromo;
 	}
@@ -124,10 +124,10 @@ public class Main
 		boolean palindromo = false;
 		
 		cadena = solicitarFrase();
-		//palindromo = verificarPalindromo(cadena);
-		cadena_sin_espacios = quitarEspacios(cadena);
-		cadena_reves = darLaVuelta(cadena_sin_espacios);
-		palindromo = verificarFrase(cadena_sin_espacios, cadena_reves);
+		palindromo = verificarPalindromo(cadena);
+//		cadena_sin_espacios = quitarEspacios(cadena);
+//		cadena_reves = darLaVuelta(cadena_sin_espacios);
+//		palindromo = verificarFrase(cadena_sin_espacios, cadena_reves);
 		mostrarResultado(palindromo);
 
 	}

@@ -15,10 +15,15 @@ public class Ocultos {
 		String carpeta_fichero = null;
 		String [] lista_directorio = null;
 		boolean b_existe = false;
+			
 		
 		carpeta_fichero = "fichero";
 		File file = null;
 		file =	new File(carpeta_fichero);
+		
+		File file_aux = null;
+		
+		
 		b_existe = file.exists();
 		
 		if (b_existe)
@@ -35,9 +40,14 @@ public class Ocultos {
 		for (int i = 0; i < lista_directorio.length; i++)
 		{
 			aux = lista_directorio[i];
-			if(aux.charAt(0) == '.')
+			file_aux = new File(carpeta_fichero + "\\" + aux);
+			
+			if(file_aux.isDirectory())
+					{
+					if(aux.charAt(0) == '.')
 					{
 						System.out.println(lista_directorio[i]);
+					}
 					}
 		}
 		

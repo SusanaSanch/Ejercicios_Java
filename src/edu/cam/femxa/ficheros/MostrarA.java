@@ -48,11 +48,6 @@ public class MostrarA {
 		
 		boolean hay_a;
 		
-		/*if(file.isDirectory())
-		{
-			System.out.println(file + " es directorio");
-		}
-		*/
 		for (int i = 0; i < lista_directorio.length; i++)
 		{
 			aux = lista_directorio[i];
@@ -63,16 +58,6 @@ public class MostrarA {
 			{
 				System.out.println("'" + aux + "'" + " es un fichero que contiene 'a'");
 			}
-			
-		/*	if (f_aux.isFile())
-			{
-				System.out.println(f_aux + " es fichero");
-			}
-			else 
-			{
-				System.out.println(f_aux + " no es fichero");
-			}
-		*/
 			
 		}
 		
