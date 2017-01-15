@@ -1,4 +1,4 @@
-package edu.cam.femxa.dni;
+package edu.cam.femxa.calculartiempoenjava;
 
 public class TiempoEnJava {
 	
