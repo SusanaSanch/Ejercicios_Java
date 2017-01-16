@@ -21,7 +21,7 @@ public class ArraySum {
 			suma_notas = suma_notas + aux;
 		}
 		
-		media = (suma_notas / (notas.length -1));  
+		media = (suma_notas / (notas.length));  
 		
 		return media;
 	}

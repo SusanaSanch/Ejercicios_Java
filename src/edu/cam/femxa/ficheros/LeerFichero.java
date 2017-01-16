@@ -17,6 +17,8 @@ public class LeerFichero {
 
 	public static void main(String[] args) throws IOException {
 		
+//		File fichero = new File ("pepe");
+//		FileReader file = new FileReader (fichero);
 		FileReader file = new FileReader (new File ("pepe"));
 		int aux = 0;
 		int total_caract = 0;

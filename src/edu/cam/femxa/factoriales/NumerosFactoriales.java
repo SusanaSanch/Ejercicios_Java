@@ -1,4 +1,4 @@
-package Factoriales;
+package edu.cam.femxa.factoriales;
 
 import java.util.Scanner;
 
