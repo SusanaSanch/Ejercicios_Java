@@ -19,28 +19,31 @@ public class Array2Fichero {
 	
 	public static String [] fromFichero2Array (File file) throws IOException
 	{
+		String [] lista_cadena = null;
 		BufferedReader br = new BufferedReader (new FileReader(file));
 		System.out.println(br);
 		
 		String aux = "";
 		int tamanio_array = 0;
 		
-		while (aux != null)
-		{
-			aux = br.readLine();
+		while (br.readLine() != null)
+			{
 			tamanio_array++;
-		}
+			}
 		br.close();
 		
+		
 		BufferedReader br2 = new BufferedReader (new FileReader(file));
-		String [] lista_cadena = new String [tamanio_array];
+		lista_cadena = new String [tamanio_array-1];
 		int pos = 0;
 		aux = "";
 		
+		aux = br2.readLine();
+		
 		while (aux != null)
 			{
-			aux = br2.readLine();
 			lista_cadena[pos] = aux;
+			aux = br2.readLine();
 			pos ++;
 			}
 		
@@ -51,7 +54,12 @@ public class Array2Fichero {
 	
 	
 	
-	
+	/**
+	 * Pasa la información 
+	 * @param lista_cadena
+	 * @return
+	 * @throws IOException
+	 */
 	public static boolean fromArray2fichero(String [] lista_cadena) throws IOException
 	{
 		boolean ok = false;
@@ -59,7 +67,7 @@ public class Array2Fichero {
 		String nombre_fichero = null;
 		boolean fichero_creado = false;
 		
-		nombre_fichero = CrearYBorrar.solicitarNombreFichero();
+		nombre_fichero = "PepitoYPepita";//CrearYBorrar.solicitarNombreFichero();
 		
 		String ruta = "fichero\\" + nombre_fichero;
 		nuevo_fichero = new File (ruta);
@@ -78,10 +86,18 @@ public class Array2Fichero {
 		BufferedWriter bw = new BufferedWriter(new FileWriter(nuevo_fichero));
 		String aux = "";
 		
-		for(int i = 0; i < lista_cadena.length; i++)
+		for(int i = 0; i < lista_cadena.length-1; i++)
 		{
 			aux = lista_cadena[i];
-			bw.write(aux);
+			try
+				{
+				bw.write(aux);
+				ok = true;
+				}
+				catch (IOException e) 
+					{
+					e.printStackTrace();
+					}
 			bw.newLine();
 		}
 		
@@ -89,7 +105,13 @@ public class Array2Fichero {
 		
 		return ok;
 	}
-
+	
+	
+/**
+ *lee un fichero, lo guarda en un array. Crea un nuevo fichero y escribe el array guardado. 
+ * @param args
+ * @throws IOException
+ */
 	public static void main(String[] args) throws IOException {
 		
 		
@@ -99,9 +121,11 @@ public class Array2Fichero {
 		
 		cadena = fromFichero2Array(file); //info del fichero al array
 		
-		for (int i = 0; i < cadena.length; i++) 
+		System.out.println("Imprimiendo array:\n");
+		
+		for (String cad : cadena)//for each. Para cada String de cadena.
 		{	
-			System.out.println(cadena[i]); //muestra array
+			System.out.println(cad); //muestra array
 		}
 		
 		escribir_nuevo_fichero = fromArray2fichero(cadena);//info del array a un nuevo fichero
