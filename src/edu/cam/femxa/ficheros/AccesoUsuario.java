@@ -9,7 +9,13 @@ import java.io.IOException;
 
 public class AccesoUsuario {
 	
-	
+	/**
+	 * Método para Escribir un usuario (nombre y contraseña) en ficheros
+	 * @param nombre nombre del usuario
+	 * @param password contraseña del usuario
+	 * @return si se ha completado el proceso con éxito(true) o no(false)
+	 * @throws IOException
+	 */
 	public static boolean escribirUsuario(String nombre, String password) throws IOException
 	{
 		boolean escrito = false;
@@ -67,6 +73,13 @@ public class AccesoUsuario {
 	
 	
 	
+	
+	/**
+	 * Solicita al usuario los datos necesarios para su registro: el nombre de usuario y la contraseña.
+	 * La contraseña se pide dos veces para evitar errores.
+	 * @return si se ha completado el proceso con éxito devuelve true en caso contrario false
+	 * @throws IOException
+	 */
 	public static boolean registroUsuario () throws IOException
 	{
 		String nombre_usuario = null;
@@ -94,6 +107,11 @@ public class AccesoUsuario {
 	
 	
 	
+	/**
+	 * Solicita el nombre y contraseña al usuario para poder acceder. El usuario tiene 3 intentos para introducir la contraseña
+	 * @returnsi se ha completado el proceso con éxito devuelve true en caso contrario false
+	 * @throws IOException
+	 */
 	public static boolean accesoUsuario () throws IOException
 	{
 		String nombre_usuario = null;
@@ -151,15 +169,19 @@ public class AccesoUsuario {
 			System.out.println("nombre usuario correcto");//nombre usuario correcto
 			if(password_valido.equals(password))
 				{
-					System.out.println("contraseña correcta");
+					System.out.println("contraseña correcta, " + nombre_usuario);
 					acceso_ok = true;
 				}
+				else
+					{
+					System.out.println("contraseña incorrecta");
+					}
 		}
-		else
-			{
-				System.out.println("Usuario o contraseña incorrecta");
-				acceso_ok = false;
-			}
+			else
+				{
+					System.out.println("Usuario o contraseña incorrecta");
+					acceso_ok = false;
+				}
 			
 		return acceso_ok;
 	}
