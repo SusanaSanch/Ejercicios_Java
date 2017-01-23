@@ -1,4 +1,4 @@
-package BaseDatos;
+package edu.cam.femxa.basedatos;
 
 public class Empleado {
 	

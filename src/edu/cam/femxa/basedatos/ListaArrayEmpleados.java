@@ -1,4 +1,4 @@
-package BaseDatos;
+package edu.cam.femxa.basedatos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
