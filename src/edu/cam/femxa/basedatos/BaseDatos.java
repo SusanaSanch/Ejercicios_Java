@@ -42,8 +42,8 @@ public class BaseDatos {
 //			//DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());// método equivalente al anterior
 //			//Sea como sea, es, <<oye, si te piden una conexión, se la pides a esa clase!>>
 //			conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "password");
-//  	        stmt = conn.createStatement();
-//			rset = stmt.executeQuery("select * from EMPLOYEES ORDER BY SALARY ASC");
+//  	        stmt = conn.createStatement(); //Pasa una instrucción por esa conexión
+//			rset = stmt.executeQuery("select * from EMPLOYEES ORDER BY SALARY ASC"); //resultado de la consulta
 //			while (rset.next())
 //				{
 //					/*System.out.println (rset.getString(1));

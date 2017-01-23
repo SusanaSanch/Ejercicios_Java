@@ -8,10 +8,16 @@ public class Consultas {
 			+ " WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID"
 			+ " ORDER by E.SALARY DESC";
 	
-//	 Cambiar de constante a búsqueda con variable
 	
-//	public static final String CONSULTA_BAJA
-//	="SELECT E.FIRST_NAME, E.EMPLOYEE_ID"
-//			+"FROM EMPLOYEES E"
-//			+ " WHERE E.DEPARTMENT_ID = id";
+	
+	public static final String CONSULTA_SALARIOS 
+	= "SELECT E.EMPLOYEE_ID, E.FIRST_NAME, D.DEPARTMENT_NAME, E.SALARY FROM EMPLOYEES E, DEPARTMENTS D WHERE (D.DEPARTMENT_NAME = 'Administration' OR D.DEPARTMENT_NAME = 'IT') AND E.DEPARTMENT_ID = D.DEPARTMENT_ID";
+	 
+	
+	
+	public static final String AUMENTA_SALARIOS
+	= "UPDATE EMPLOYEES SET SALARY = (SALARY * 1.2)"
+			+ " WHERE DEPARTMENT_ID IN"
+			+ " (SELECT DEPARTMENT_ID FROM DEPARTMENTS WHERE DEPARTMENT_NAME = 'Administration' OR DEPARTMENT_NAME = 'IT')";
+
 }

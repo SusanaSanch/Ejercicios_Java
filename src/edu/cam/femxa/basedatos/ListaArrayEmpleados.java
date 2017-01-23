@@ -55,8 +55,6 @@ public class ListaArrayEmpleados {
 		Empleado empleada = null;
 				
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());
-
 		conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "password");
 		stmt = conn.createStatement();
 
