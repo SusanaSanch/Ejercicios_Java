@@ -116,42 +116,42 @@ public class AltayBajaEmpleados {
 									liberarRecursosConn(conn);
 									liberarRecursosStmt(stmt);
 								}
-					
-	
 					break;
 					
 				case 2:
 					
-				try 
-					{
-						conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "password");
-					} 
-					catch (SQLException e)
+					try 
 						{
-							e.printStackTrace();
-						}
-				try 
-					{
-						stmt = conn.createStatement();
-					} 
-					catch (SQLException e)
+							conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "password");
+						} 
+						catch (SQLException e)
+							{
+								e.printStackTrace();
+							}
+					try 
 						{
-							e.printStackTrace();
-						}
+							stmt = conn.createStatement();
+						} 
+						catch (SQLException e)
+							{
+								e.printStackTrace();
+							}
+							
+						empleado = solicitarDatosBaja();
 						
-					empleado = solicitarDatosBaja();
-					
-				try
-					{
-						stmt.execute(Consultas.BAJA_USUARIO + empleado.getId());
-					} 
-					catch (SQLException e)
+					try
 						{
-							e.printStackTrace();
-						}
-					
-					liberarRecursosConn(conn);
-					liberarRecursosStmt(stmt);
+							stmt.execute(Consultas.BAJA_USUARIO + empleado.getId());
+						} 
+						catch (SQLException e)
+							{
+								e.printStackTrace();
+							}
+							finally 
+								{
+									liberarRecursosConn(conn);
+									liberarRecursosStmt(stmt);
+								}
 					
 					break;
 		
