@@ -105,7 +105,7 @@ public class AltayBajaEmpleados {
 					
 					try 
 						{
-							stmt.execute(Consultas.ALTA_USUARIO + empleado.getId() + ", " + empleado.getNombre());
+							stmt.execute(Consultas.ALTA_USUARIO + empleado.getId() + ", " + "'" + empleado.getNombre() + "'" + ")");
 						} 
 						catch (SQLException e) 
 							{

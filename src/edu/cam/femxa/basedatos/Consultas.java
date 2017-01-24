@@ -22,7 +22,7 @@ public class Consultas {
 
 	
 	public static final String ALTA_USUARIO
-	= "INSERT INTO EMPLOYEES (EMPLOYEE_ID, FIRST_NAME) VALUES ";//+ Empleado nombre + ", " + Empleado id
+	= "INSERT INTO EMPLOYEES (EMPLOYEE_ID, FIRST_NAME) VALUES (";//+ Empleado nombre + ", " + Empleado id
 	
 	public static final String BAJA_USUARIO
 	= "DELETE FROM EMPLOYEES WHERE EMPLOYEE_ID = ";
