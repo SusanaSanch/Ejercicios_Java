@@ -5,58 +5,65 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+
 
 public class AltayBajaEmpleados {
 	
 	
 	public static Empleado solicitarDatosAlta()
 	{
-//		ArrayList<Empleado> l_empleados = null;
-		boolean continuar = false;
 		int id_empleado = 0;
 		String nombre_empleado = null;
 		
-//		do
-//			{
-//			
 			id_empleado = EntradaSalida.solicitaId();
 			nombre_empleado = EntradaSalida.solicitaNombre();
 			Empleado empleado = new Empleado(id_empleado, nombre_empleado, 0, 0, null);
-			
-//			l_empleados.add(empleado);
-			
-//			}
-//		while (continuar);
 		
+		return empleado;
+	}
+	
+	
+	public static Empleado solicitarDatosBaja()
+	{
+		int id_empleado = 0;
 		
+			id_empleado = EntradaSalida.solicitaId();
+			Empleado empleado = new Empleado(id_empleado, null, 0, 0, null);
 		
 		return empleado;
 	}
 	
 	
 	
-	public static boolean darBaja()
-	{
-		boolean baja_ok = false;
-		
-		return baja_ok;
-	}
 	
-	public static void liberarRecursos(Connection conn, Statement stmt, ResultSet rset)
+	
+	
+	public static void liberarRecursosConn(Connection conn)
 	{
-		if (rset != null) 	{ try { rset.close(); } catch (Exception e2) { e2.printStackTrace(); }}
-		if (stmt != null)	{ try {	stmt.close(); } catch (Exception e2) { e2.printStackTrace(); }}
 		if (conn != null) 	{ try { conn.close(); } catch (Exception e3) { e3.printStackTrace(); }}
 	}
+
+
+	
+	public static void liberarRecursosStmt(Statement stmt)
+	{
+		if (stmt != null)	{ try {	stmt.close(); } catch (Exception e2) { e2.printStackTrace(); }}
+	}
 	
 	
 	
-	public static void main(String[] args) throws SQLException {
+	
+	public static void liberarRecursosRset(ResultSet rset)
+	{
+		if (rset != null) 	{ try { rset.close(); } catch (Exception e2) { e2.printStackTrace(); }}
+	}
+	
+	
+	
+	public static void main(String[] args) {
 		
 		int opcion_menu = 0;
 		Connection conn = null;
-		ResultSet rset = null;
 		Statement stmt = null;
 		Empleado empleado = null;
 		empleado = new Empleado(0, null, 0, 0, null);	
@@ -70,32 +77,81 @@ public class AltayBajaEmpleados {
 				case 1:
 			
 					empleado = solicitarDatosAlta();
-					conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "password");
-					stmt = conn.createStatement();
+					try 
+						{
+							Class.forName("oracle.jdbc.driver.OracleDriver");
+						} 
+						catch (ClassNotFoundException e) 
+							{
+								e.printStackTrace();
+							}
 					
-//					rset. //crear nuevos empleados
+					try 
+						{
+							conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "password");
+						} 
+						catch (SQLException e1)
+							{
+								e1.printStackTrace();
+							}
+					try
+						{
+							stmt = conn.createStatement();
+						} 
+						catch (SQLException e) 
+							{
+								e.printStackTrace();
+							}
 					
-					rset.upd
-					liberarRecursos(conn, stmt, rset); 
+					try 
+						{
+							stmt.execute(Consultas.ALTA_USUARIO + empleado.getId() + ", " + empleado.getNombre());
+						} 
+						catch (SQLException e) 
+							{
+								e.printStackTrace();
+							}
+							finally 
+								{
+									liberarRecursosConn(conn);
+									liberarRecursosStmt(stmt);
+								}
+					
 	
 					break;
 					
 				case 2:
 					
-					conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "password");
-					stmt = conn.createStatement();
+				try 
+					{
+						conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "password");
+					} 
+					catch (SQLException e)
+						{
+							e.printStackTrace();
+						}
+				try 
+					{
+						stmt = conn.createStatement();
+					} 
+					catch (SQLException e)
+						{
+							e.printStackTrace();
+						}
+						
+					empleado = solicitarDatosBaja();
 					
-
+				try
+					{
+						stmt.execute(Consultas.BAJA_USUARIO + empleado.getId());
+					} 
+					catch (SQLException e)
+						{
+							e.printStackTrace();
+						}
 					
-//					rset = stmt.executeQuery(SELECT)
-
-					
-					//cambiar la llamada a la constante
-//					rset = stmt.executeQuery(Consultas.CONSULTA_BAJA);
-					
-					darBaja();
-					
-	//				baja --> id empleado
+					liberarRecursosConn(conn);
+					liberarRecursosStmt(stmt);
 					
 					break;
 		

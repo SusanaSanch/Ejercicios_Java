@@ -20,4 +20,12 @@ public class Consultas {
 			+ " WHERE DEPARTMENT_ID IN"
 			+ " (SELECT DEPARTMENT_ID FROM DEPARTMENTS WHERE DEPARTMENT_NAME = 'Administration' OR DEPARTMENT_NAME = 'IT')";
 
+	
+	public static final String ALTA_USUARIO
+	= "INSERT INTO EMPLOYEES (EMPLOYEE_ID, FIRST_NAME) VALUES ";//+ Empleado nombre + ", " + Empleado id
+	
+	public static final String BAJA_USUARIO
+	= "DELETE FROM EMPLOYEES WHERE EMPLOYEE_ID = ";
+	
+	
 }
