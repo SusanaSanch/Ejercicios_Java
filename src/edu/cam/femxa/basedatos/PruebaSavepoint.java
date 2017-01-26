@@ -5,10 +5,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Savepoint;
 import java.sql.Statement;
 
 
-public class ActualizarSalariosConsulta {
+
+public class PruebaSavepoint {
 	
 	
 	
@@ -44,7 +46,9 @@ public class ActualizarSalariosConsulta {
 	
 	
 	/**
-	 * Actualiza el salario del departamento seleccionado
+	 * Actualiza el salario del departamento seleccionado y muestra el histórico de cambios de salario del día,
+	 * guarda un Savepoint después de actualizar, el cual se especifica al rollback, por lo que aunque haya alguna
+	 * excepción, la actualización se llevará a cabo.
 	 * @param args
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
@@ -55,14 +59,17 @@ public class ActualizarSalariosConsulta {
 		ResultSet rset = null;
 		Statement stmt = null;
 		Statement stmt2 = null;
+		Savepoint savepoint = null;
 		
 		try 
 			{
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "password");
 			conn.setAutoCommit(false); //Autocommit a false, ya que si no se pierde el concepto de transacción.
 			stmt = conn.createStatement();
 			stmt.execute(Consultas.AUMENTA_SALARIOS2);
+			savepoint = conn.setSavepoint();
 			
 			stmt2 = conn.createStatement();
 			rset = stmt2.executeQuery(Consultas.HISTORICO_SALARIO);
@@ -78,7 +85,7 @@ public class ActualizarSalariosConsulta {
 			} 
 			catch (SQLException e) 
 				{
-					conn.rollback();
+					conn.rollback(savepoint);
 					e.printStackTrace();
 				}
 				finally 
