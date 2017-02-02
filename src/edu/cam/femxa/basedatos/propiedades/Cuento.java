@@ -1,4 +1,4 @@
-package edu.femxa.val.basededatos.dao;
+package edu.cam.femxa.basedatos.propiedades;
 
 import java.io.BufferedWriter;
 import java.io.File;
